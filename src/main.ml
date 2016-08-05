@@ -1,12 +1,12 @@
 open Spec
 open Parse_problem
 open Print_solution
-open Big_int
+open Num
 
-let empty_solution: solution = { source = [(Int zero_big_int, Int zero_big_int); (Int unit_big_int, Int zero_big_int); (Int unit_big_int, Int unit_big_int); (Int zero_big_int, Int unit_big_int)]; facets = [[0; 1; 2; 3]]; destination = [] }
+let empty_solution: solution = { source = []; facets = []; destination = [] }
 
 let solve (p: problem): solution =
-  { source = [(Int zero_big_int, Int zero_big_int); (Int unit_big_int, Int zero_big_int); (Int unit_big_int, Int unit_big_int); (Int zero_big_int, Int unit_big_int)]; facets = [[0; 1; 2; 3]]; destination = Array.to_list (fst p).polygons.(0).vertices }
+  { source = [(Int 0, Int 0); (Int 1, Int 0); (Int 1, Int 1); (Int 0, Int 1)]; facets = [[0; 1; 2; 3]]; destination = Array.to_list (fst p).polygons.(0).vertices }
 
 let solve_problem (f: string) =
   let p = parse_problem f in

@@ -1,10 +1,7 @@
 open Spec
-open Big_int
+open Num
 
-let print_point p =
-  match p with
-  | Frac (a, b) -> Printf.sprintf "%s/%s" (string_of_big_int a) (string_of_big_int b)
-  | Int a -> Printf.sprintf "%s" (string_of_big_int a)
+let print_point p = Printf.sprintf "%s" (string_of_num p)
 
 let print_vertex (p1, p2) =
   (print_point p1) ^ "," ^ (print_point p2)

@@ -1,6 +1,6 @@
-open Big_int
+open Num
 
-type point = Int of big_int | Frac of big_int * big_int
+type point = num
 
 type vertex = (point * point)
 
