@@ -7,11 +7,11 @@ let parse_vertex ic =
     | _ -> failwith ("couldn't parse vertex " ^ line)
 
 let parse_silhouette ic =
-  let num_polygon = input_line ic |> int_of_string in
+  let num_polygon = input_line ic |> (fun s -> try int_of_string s with | _ -> failwith ("int_of_string1" ^ s)) in
   let polygons = Array.make num_polygon { num_vertices = 0; vertices = [| |] } in
   let i = ref 0 in
   while (!i < num_polygon) do
-    polygons.(!i).num_vertices <- (input_line ic |> int_of_string);
+    polygons.(!i).num_vertices <- (input_line ic |> (fun s -> try int_of_string s with | _ -> failwith ("int_of_string2" ^ s)));
     polygons.(!i).vertices <- Array.make polygons.(!i).num_vertices (Int 0, Int 0);
     let j = ref 0 in
     while (!j < polygons.(!i).num_vertices) do
@@ -28,7 +28,7 @@ let parse_line ic =
   | _ -> failwith ("couldn't parse vertex " ^ line)
 
 let parse_skeleton ic =
-  let num_lines = input_line ic |> int_of_string in
+  let num_lines = input_line ic |> (fun s -> try int_of_string s with | _ -> failwith ("int_of_string3" ^ s)) in
   let lines = Array.make num_lines ((Int 0, Int 0), (Int 0, Int 0)) in
   let i = ref 0 in
   while (!i < num_lines) do
